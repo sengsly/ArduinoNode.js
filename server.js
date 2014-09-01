@@ -12,8 +12,13 @@ var val = 0;
 var socketServer;
 var portName = 'COM14'; //change this to your Arduino port
 var sendData = "";
+var led ;
 
 
+board.on("ready", function() {
+
+	led= new five.Led(13);
+});
 
 
 // handle contains locations to browse to (vote and poll); pathnames.
@@ -49,12 +54,10 @@ function initSocketIO(httpServer,debug)
 	socket.emit('updateData',{pollOneValue:data});
 	});
 	socket.on('buttonval', function(data) {
-		//board.digitalWrite(13, (val = val ? 0 : 1));
-		led = new five.Led(13);
-		ledfade= new five.Led(11);
+//		board.digitalWrite(13, (val = val ? 0 : 1));
+		console.log("toggle LED ")
   		led.toggle();
-  		ledfade.fade(500);
-
+//  		ledfade.fade(500);
 	});
 	socket.on('sliderval', function(data) {
 		//serialPort.write(data + 'P');
