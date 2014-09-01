@@ -50,7 +50,7 @@ function initSocketIO(httpServer,debug)
 	});
 	socket.on('buttonval', function(data) {
 		//board.digitalWrite(13, (val = val ? 0 : 1));
-		led = new five.Led(12);
+		led = new five.Led(11);
   		led.fadeIn();
   		//led.brightness(25)
 
